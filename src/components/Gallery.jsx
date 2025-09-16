@@ -14,6 +14,12 @@ const founders = [
         className: 'col-span-1',
     },
     {
+        name: 'Pharm. Chigozie Oguine',
+        title: 'Chairman of the Board',
+        image: '/images/ChigozieOguine.jpg',
+        className: 'col-span-1',
+    },
+    {
         name: 'Dr. Uju Osagie',
         title: 'Board Member',
         image: '/images/DrUjuOsagie.jpeg',
