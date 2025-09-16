@@ -125,7 +125,7 @@ const Navbar = () => {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="md:hidden bg-deep-blue shadow-xl"
+                    className={`md:hidden ${scrolled ? 'bg-deep-blue/90 shadow-2xl backdrop-blur-md' : 'bg-deep-blue/90 shadow-3xl backdrop-blur-md'} `}
                 >
                     <div className="flex flex-col items-center px-4 pt-2 pb-4 space-y-4">
                         {navLinks.map((link) => (

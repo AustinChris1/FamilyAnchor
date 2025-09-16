@@ -49,7 +49,7 @@ const Impact = () => {
     };
 
     return (
-        <section id="impact" className="py-20 lg:py-32 bg-deep-blue text-cream-white">
+        <section id="impact" className="py-20 lg:py-32 overflow-x-hidden bg-deep-blue text-cream-white">
             <div className="container mx-auto px-6 text-center">
                 <motion.h2
                     initial={{ opacity: 0, y: -20 }}

@@ -20,6 +20,12 @@ const founders = [
         className: 'col-span-1',
     },
     {
+        name: 'Godson Ugochukwu Oguine. Esq.',
+        title: 'Secretary of the Board',
+        image: '/images/GodsonUgochukwu.jpg',
+        className: 'col-span-1',
+    },
+    {
         name: 'Dr. Uju Osagie',
         title: 'Board Member',
         image: '/images/DrUjuOsagie.jpeg',
@@ -121,7 +127,7 @@ const Gallery = () => {
     };
 
     return (
-        <section id="gallery" className="py-20 bg-cream-white text-deep-blue">
+        <section id="gallery" className="py-20 bg-cream-white overflow-x-hidden text-deep-blue">
             <div className="container mx-auto px-6">
                 <motion.h2
                     className="text-4xl font-extrabold text-center mb-12"

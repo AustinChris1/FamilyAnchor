@@ -44,7 +44,7 @@ const Programs = () => {
     };
   
     return (
-        <section id="programs" className="py-20 lg:py-32 bg-cream-white">
+        <section id="programs" className="py-20 lg:py-32 overflow-x-hidden bg-cream-white">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-16">
                     <motion.h2 

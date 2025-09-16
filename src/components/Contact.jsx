@@ -25,7 +25,7 @@ const Contact = () => {
 
     return (
         <section id="contact" className="py-20 lg:py-32 bg-cream-white">
-            <div className="container mx-auto px-6">
+            <div className="container overflow-x-hidden mx-auto px-6">
                 <div className="text-center mb-16">
                     <motion.h2
                         initial={{ opacity: 0, y: -20 }}
@@ -83,6 +83,10 @@ const Contact = () => {
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium text-warm-gray">Email</label>
                                 <input type="email" id="email" name="email" className="mt-1 block w-full rounded-md border-warm-gray shadow-sm focus:border-gold focus:ring focus:ring-gold focus:ring-opacity-50 transition-colors duration-300 bg-deep-blue text-cream-white" required />
+                            </div>
+                            <div>
+                                <label htmlFor="phone" className="block text-sm font-medium text-warm-gray">Phone</label>
+                                <input type="phone" id="phone" name="phone" className="mt-1 block w-full rounded-md border-warm-gray shadow-sm focus:border-gold focus:ring focus:ring-gold focus:ring-opacity-50 transition-colors duration-300 bg-deep-blue text-cream-white" required />
                             </div>
                             <div>
                                 <label htmlFor="message" className="block text-sm font-medium text-warm-gray">Message</label>

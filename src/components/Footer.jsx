@@ -4,7 +4,7 @@ import {Mail} from 'lucide-react';
 
 const Footer = () => {
     return (
-        <footer className="bg-deep-blue text-cream-white">
+        <footer className="bg-deep-blue overflow-x-hidden text-cream-white">
             <div className="container mx-auto px-6 py-12">
                 <div className="text-center">
                     <motion.h2 

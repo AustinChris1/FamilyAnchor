@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const Mission = () => {
     return (
-        <section id="mission" className="py-20 lg:py-32 bg-deep-blue">
+        <section id="mission" className="py-20 lg:py-32 overflow-x-hidden bg-deep-blue">
             <div className="container mx-auto px-6 py-16 text-center shadow-xl">
                 <motion.div 
                     initial={{ opacity: 0, y: 50 }}

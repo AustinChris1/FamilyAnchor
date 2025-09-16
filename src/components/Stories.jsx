@@ -47,7 +47,7 @@ const Stories = () => {
     };
 
     return (
-        <section id="stories" className="py-20 lg:py-32 bg-cream-white/50">
+        <section id="stories" className="py-20 lg:py-32 overflow-x-hidden bg-cream-white/50">
             <div className="container mx-auto px-6 text-center">
                 <motion.h2 
                     initial={{ opacity: 0, y: -20 }}
