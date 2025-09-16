@@ -67,9 +67,10 @@ const Navbar = () => {
             <div className="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
                 <div className="text-2xl font-extrabold tracking-widest">
                     <button onClick={() => scrollToSection('home')} className="flex items-center space-x-2 focus:outline-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-gold" viewBox="0 0 20 20" fill="currentColor">
+                        {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-gold" viewBox="0 0 20 20" fill="currentColor">
                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9 5a1 1 0 112 0v2.252A4.004 4.004 0 0115 11.252V12a1 1 0 11-2 0v-.748a2.002 2.002 0 00-4 0V12a1 1 0 11-2 0v-.748A4.004 4.004 0 019 7.252V5z" clipRule="evenodd" />
-                        </svg>
+                        </svg> */}
+                        <img src="/logo.jpg" alt="Family Anchor" className='w-8 h-8' />
                         <span className="text-cream-white font-extrabold">Family Anchor</span>
                     </button>
                 </div>

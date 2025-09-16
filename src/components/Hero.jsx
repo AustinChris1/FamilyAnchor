@@ -8,11 +8,12 @@ import { Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 
+// Import the specific images you want for the hero slider
 const heroImages = [
-    { src: '/images/IMG-20250825-WA0018.jpg', alt: 'Family Anchor' },
-    { src: '/images/IMG-20250825-WA0021.jpg', alt: 'A mission for hope' },
+    { src: '/images/face1.jpeg', alt: 'Family Anchor' },
+    { src: '/images/face2.jpeg', alt: 'A mission for hope' },
     { src: '/images/IMG-20250825-WA0020.jpg', alt: 'Empowering communities' },
-    { src: '/images/IMG-20250825-WA0079.jpg', alt: 'Empowering communities' },
+    { src: '/images/face3.jpeg', alt: 'Empowering communities' },
 ];
 
 const ParticleStarfield = () => {
@@ -117,85 +118,74 @@ const Hero = () => {
     };
 
     return (
-        <section id="home" className="relative min-h-screen flex items-center bg-deep-blue justify-center overflow-x-hidden">
-            <ParticleStarfield />
-            
-            <div className="relative z-20 container mx-auto px-6 h-full flex flex-col md:flex-row items-center md:justify-between text-center md:text-left pt-24 pb-12 md:py-0">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="max-w-xl mx-auto md:mx-0 md:w-1/2"
-                >
-                    <motion.h1 
-                        ref={scrollRef} 
-                        variants={variants}
-                        initial="hidden"
-                        animate={controls}
-                        className="text-3xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-snug text-cream-white"
-                    >
-                        {"Family Anchor Ministry".split(" ").map((word, index) => (
-                            <motion.span key={index} variants={childVariants} className="inline-block mr-2">
-                                {word}
-                            </motion.span>
-                        ))}
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.6 }}
-                        className="text-xl md:text-3xl font-light text-gold mb-8"
-                    >
-                        A Mission for Hope
-                    </motion.p>
-                    {/* <motion.button 
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.9 }}
-                        whileHover={{ scale: 1.05, boxShadow: "0px 10px 30px rgba(255, 199, 44, 0.4)" }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => document.getElementById('getinvolved')?.scrollIntoView({ behavior: 'smooth' })}
-                        className="bg-gold text-deep-blue font-bold py-4 px-10 rounded-full shadow-lg transition-all duration-300 text-lg"
-                    >
-                        Learn More
-                    </motion.button> */}
-                </motion.div>
+        <div className="overflow-x-hidden">
+            <section id="home" className="relative min-h-screen flex items-center bg-deep-blue justify-center">
+                <ParticleStarfield />
                 
-                {/* Image slider container*/}
-                <div className="relative w-full h-[50vh] md:w-1/2 md:h-full mt-12 md:mt-0 md:ml-12 overflow-hidden rounded-xl shadow-2xl">
-                    <Swiper
-                        modules={[Autoplay, EffectFade]}
-                        effect="fade"
-                        autoplay={{ delay: 5000, disableOnInteraction: false }}
-                        loop={true}
-                        speed={1000}
-                        className="w-full h-full"
+                <div className="relative z-20 container mx-auto px-6 h-full flex flex-col md:flex-row items-center md:justify-between text-center md:text-left pt-24 pb-12 md:py-0">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="max-w-xl mx-auto md:mx-0 md:w-1/2"
                     >
-                        {heroImages.map((img, index) => (
-                            <SwiperSlide key={index}>
-                                <img 
-                                    src={img.src} 
-                                    alt={img.alt} 
-                                    className="object-cover w-full h-full"
-                                />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                    <div className="absolute top-0 left-0 w-full h-full bg-deep-blue/60 z-10 hidden md:block" />
+                        <motion.h1 
+                            ref={scrollRef} 
+                            variants={variants}
+                            initial="hidden"
+                            animate={controls}
+                            className="text-3xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-snug text-cream-white"
+                        >
+                            {"Family Anchor Ministry".split(" ").map((word, index) => (
+                                <motion.span key={index} variants={childVariants} className="inline-block mr-2">
+                                    {word}
+                                </motion.span>
+                            ))}
+                        </motion.h1>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.6 }}
+                            className="text-xl md:text-3xl font-light text-gold mb-8"
+                        >
+                            A Mission for Hope
+                        </motion.p>
+                    </motion.div>
+                    
+                    <div className="relative w-full h-[50vh] md:w-1/2 md:h-full mt-12 md:mt-0 md:ml-12 overflow-hidden rounded-xl shadow-2xl">
+                        <Swiper
+                            modules={[Autoplay, EffectFade]}
+                            effect="fade"
+                            autoplay={{ delay: 5000, disableOnInteraction: false }}
+                            loop={true}
+                            speed={1000}
+                            className="w-full h-full"
+                        >
+                            {heroImages.map((img, index) => (
+                                <SwiperSlide key={index}>
+                                    <img 
+                                        src={img.src} 
+                                        alt={img.alt} 
+                                        className="object-cover w-full h-full"
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                        <div className="absolute top-0 left-0 w-full h-full bg-deep-blue/60 z-10 hidden md:block" />
+                    </div>
                 </div>
-            </div>
 
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
-                <motion.div
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                    onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
-
-                >
-                    <svg className="w-8 h-8 text-cream-white cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
-                </motion.div>
-            </div>
-        </section>
+                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
+                    <motion.div
+                        animate={{ y: [0, 10, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                        onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
+                    >
+                        <svg className="w-8 h-8 text-cream-white cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+                    </motion.div>
+                </div>
+            </section>
+        </div>
     );
 };
 

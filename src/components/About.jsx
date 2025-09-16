@@ -18,7 +18,7 @@ const About = () => {
                             Family Anchor is a non-profit, international, and non-denominational organization committed to bringing hope to children and families through the love and truth of Jesus Christ. We serve communities by providing essential support such as food, clothing, school supplies, and financial assistance.
                         </p>
                         <p className="text-lg text-cream-white leading-relaxed">
-                            Rooted in compassion and guided by faith, we are on A Mission for Hope, meeting both physical and spiritual needs to uplift lives and share God’s love across communities, backgrounds, and beliefs.
+                            Rooted in compassion and guided by faith, we are on "A Mission for Hope", meeting both physical and spiritual needs to uplift lives and share God’s love across communities, backgrounds, and beliefs.
                         </p>
                     </motion.div>
                     <motion.div 

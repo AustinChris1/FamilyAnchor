@@ -8,39 +8,68 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 // Founder data with image paths
 const founders = [
     {
-        name: 'Mummy',
+        name: 'Lady Patience Oguine',
         title: 'Founder',
         image: '/images/founder.jpg',
         className: 'col-span-1',
     },
     {
         name: 'Dr. Uju Osagie',
-        title: 'Founder & President',
+        title: 'Board Member',
         image: '/images/DrUjuOsagie.jpeg',
         className: 'col-span-1',
     },
     {
-        name: 'Deaconess Funmi Osagie',
-        title: 'Co-Founder',
+        name: 'Dr. Amara Albert',
+        title: 'Board Member',
         image: '/images/deaconess.jpg',
+        className: 'col-span-1',
+    },
+    {
+        name: 'Ada Mbanaso',
+        title: 'Board Member',
+        image: '/images/Ada Mbanaso.jpg',
+        className: 'col-span-1',
+    },
+    {
+        name: 'Mrs. Chinyere Okeke',
+        title: 'Board Member',
+        image: '/images/chinyereokeke.jpg',
+        className: 'col-span-1',
+    },
+    {
+        name: 'Dame Ezinne Ifeyinwa Ukachukwu',
+        title: 'Board Member',
+        image: '/images/Dame Ezinne Ifeyinwa Ukachukwu.jpg',
+        className: 'col-span-1',
+    },
+    {
+        name: 'Gloria Mbaoma',
+        title: 'Board Member',
+        image: '/images/Gloria Mbaoma.jpg',
+        className: 'col-span-1',
+    },
+    {
+        name: 'Mrs Charity Oguine',
+        title: 'Board Member',
+        image: '/images/Mrs Charity Oguine.jpg',
         className: 'col-span-1',
     },
 ];
 
-// All other image paths from your public/images directory
 const galleryImages = [
     '/images/cartonsOfIndomie.jpg',
     '/images/IMG-20250825-WA0012.jpg',
     '/images/IMG-20250825-WA0013.jpg',
     '/images/IMG-20250825-WA0014.jpg',
     '/images/IMG-20250825-WA0017.jpg',
-    '/images/IMG-20250825-WA0018.jpg',
+    '/images/face1.jpeg',
     '/images/IMG-20250825-WA0019.jpg',
-    '/images/IMG-20250825-WA0020.jpg',
-    '/images/IMG-20250825-WA0021.jpg',
+    '/images/face3.jpeg',
+    '/images/face2.jpeg',
     '/images/IMG-20250825-WA0022.jpg',
     '/images/IMG-20250825-WA0023.jpg',
-    '/images/IMG-20250825-WA0036.jpg',
+    '/images/face5.jpeg',
     '/images/IMG-20250825-WA0037.jpg',
     '/images/IMG-20250825-WA0038.jpg',
     '/images/IMG-20250825-WA0039.jpg',
@@ -54,8 +83,7 @@ const galleryImages = [
     '/images/IMG-20250825-WA0047.jpg',
     '/images/IMG-20250825-WA0074.jpg',
     '/images/IMG-20250825-WA0076.jpg',
-    '/images/IMG-20250825-WA0077.jpg',
-    '/images/IMG-20250825-WA0079.jpg',
+    '/images/face4.jpeg',
 ];
 
 const Gallery = () => {
@@ -93,35 +121,6 @@ const Gallery = () => {
                     className="text-4xl font-extrabold text-center mb-12"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                >
-                    Our Founders
-                </motion.h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-                    {founders.map((founder, index) => (
-                        <motion.div
-                            key={index}
-                            className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105"
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: index * 0.2 }}
-                        >
-                            <img
-                                src={founder.image}
-                                alt={founder.name}
-                                className="w-40 h-40 rounded-full object-cover mb-4 border-4 border-gold"
-                            />
-                            <h3 className="text-xl font-bold">{founder.name}</h3>
-                            <p className="text-warm-gray">{founder.title}</p>
-                        </motion.div>
-                    ))}
-                </div>
-
-                <motion.h2
-                    className="text-4xl font-extrabold text-center mb-12"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                 >
                     Photo Gallery
@@ -147,7 +146,6 @@ const Gallery = () => {
                         </motion.div>
                     ))}
                 </motion.div>
-
                 <div className="flex justify-center mt-12">
                     <ReactPaginate
                         previousLabel={<ArrowLeft />}
@@ -170,6 +168,36 @@ const Gallery = () => {
                         disabledClassName={'opacity-50 cursor-not-allowed'}
                     />
                 </div>
+
+                <motion.h2
+                    className="text-4xl font-extrabold text-center my-12"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                >
+                    Our Founders
+                </motion.h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                    {founders.map((founder, index) => (
+                        <motion.div
+                            key={index}
+                            className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105"
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: index * 0.2 }}
+                        >
+                            <img
+                                src={founder.image}
+                                alt={founder.name}
+                                className="w-40 h-40 rounded-full object-cover mb-4 border-4 border-gold"
+                            />
+                            <h3 className="text-xl font-bold">{founder.name}</h3>
+                            <p className="text-warm-gray">{founder.title}</p>
+                        </motion.div>
+                    ))}
+                </div>
+
             </div>
         </section>
     );

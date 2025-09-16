@@ -45,13 +45,13 @@ const GetInvolved = () => {
                             <div className="text-gold mb-4">{action.icon}</div>
                             <h3 className="text-2xl font-bold text-gold mb-3">{action.title}</h3>
                             <p className="text-warm-gray mb-6">{action.description}</p>
-                            <motion.button 
+                            {/* <motion.button 
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="mt-auto w-full bg-gold text-deep-blue font-bold py-3 px-6 rounded-full shadow-lg hover:bg-gold transition-all duration-300"
                             >
                                 Learn More
-                            </motion.button>
+                            </motion.button> */}
                         </motion.div>
                     ))}
                 </div>
