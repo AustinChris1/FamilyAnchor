@@ -5,7 +5,7 @@ import { useRef, useEffect } from 'react';
 const testimonials = [
     {
         quote: "Family Anchor Ministry has been a lifeline for our family. The support we received has transformed our lives and given us a renewed sense of hope.",
-        author: "Osa-Igharo Family",
+        author: "Ugwah Family",
         image: "https://images.unsplash.com/photo-1594950346083-2070e5b512e0?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600"
     },
     {
@@ -15,7 +15,7 @@ const testimonials = [
     },
     {
         quote: "We were in a difficult season, and Family Anchor provided not just food and clothing, but also spiritual guidance and encouragement that brought us through.",
-        author: "Taiwo O.",
+        author: "Mr. Victor Moses",
         image: "https://images.unsplash.com/photo-1594950346083-2070e5b512e0?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600"
     }
 ];
