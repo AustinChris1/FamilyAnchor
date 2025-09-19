@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Twitter, Facebook, Linkedin } from 'lucide-react';
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const members = [
     {
@@ -22,7 +19,7 @@ const members = [
         name: 'Godson Ugochukwu Oguine. Esq.',
         title: 'Secretary of the Board',
         image: '/images/GodsonUgochukwu.jpg',
-        social: { twitter: '#', facebook: 'https://www.facebook.com/share/18m55rF7GC/', linkedin: '#' }
+        social: { twitter: '#', facebook: 'https://www.facebook.com/share/18m55rF7GC/', linkedin: '#', tiktok:'https://tiktok.com/ogugodson' }
     },
     {
         name: 'Mr. Charles Orji',
@@ -158,76 +155,113 @@ const allGalleryImages = [
     '/images/IMG-20250131-WA0026.jpg',
     '/images/IMG-20250131-WA0028.jpg',
     '/images/IMG-20250131-WA0029.jpg',
-    '/images/IMG-20250825-WA0012.jpg',
-    '/images/IMG-20250825-WA0013.jpg',
-    '/images/IMG-20250825-WA0014.jpg',
-    '/images/IMG-20250825-WA0017.jpg',
-    '/images/IMG-20250825-WA0018.jpg',
-    '/images/IMG-20250825-WA0019.jpg',
-    '/images/IMG-20250825-WA0020.jpg',
-    '/images/IMG-20250825-WA0021.jpg',
-    '/images/IMG-20250825-WA0022.jpg',
-    '/images/IMG-20250825-WA0023.jpg',
-    '/images/IMG-20250825-WA0036.jpg',
-    '/images/IMG-20250825-WA0037.jpg',
-    '/images/IMG-20250825-WA0038.jpg',
-    '/images/IMG-20250825-WA0039.jpg',
-    '/images/IMG-20250825-WA0040.jpg',
-    '/images/IMG-20250825-WA0041.jpg',
-    '/images/IMG-20250825-WA0042.jpg',
-    '/images/IMG-20250825-WA0043.jpg',
-    '/images/IMG-20250825-WA0044.jpg',
-    '/images/IMG-20250825-WA0045.jpg',
-    '/images/IMG-20250825-WA0046.jpg',
-    '/images/IMG-20250825-WA0047.jpg',
-    '/images/IMG-20250825-WA0074.jpg',
-    '/images/IMG-20250825-WA0076.jpg',
-    '/images/IMG-20250825-WA0077.jpg',
-    '/images/IMG-20250825-WA0079.jpg',
-    '/images/random111111.jpg',
-    '/images/random34332.jpg',
-    '/images/Screenshot_20250918_181956.jpg',
-    '/images/Screenshot_20250918_182253.jpg',
-    '/images/Screenshot_20250918_182629.jpg',
-    '/images/Screenshot_20250918_182913.jpg',
-    '/images/Screenshot_20250918_183148.jpg',
-    '/images/Screenshot_20250918_183716.jpg',
-    '/images/Screenshot_20250918_184525.jpg',
-    '/images/Screenshot_20250918_184707.jpg',
-    '/images/Screenshot_20250918_185001.jpg',
-    '/images/Screenshot_20250918_185407.jpg',
-    '/images/Screenshot_20250918_185612.jpg',
-    '/images/Screenshot_20250918_190607.jpg',
-    '/images/Screenshot_20250918_191126.jpg',
-    '/images/Screenshot_20250918_201104.jpg',
-    '/images/Screenshot_20250918_201157.jpg',
-    '/images/Screenshot_20250918_201323.jpg',
-    '/images/Screenshot_20250918_201615.jpg',
-    '/images/Screenshot_20250918_201722.jpg',
-    '/images/Screenshot_20250918_210449.jpg',
-    '/images/Screenshot_20250918_210950.jpg',
-    '/images/Screenshot_20250918_211242.jpg',
-    '/images/Screenshot_20250918_220903.jpg',
-    '/images/Screenshot_20250918_221023.jpg'
 ];
 
-const PrevArrow = ({ onClick }) => (
-    <button
-        onClick={onClick}
-        className="absolute top-1/2 left-0 -translate-y-1/2 -ml-6 z-10 p-2 rounded-full bg-white shadow-md hover:bg-gold transition-colors duration-200"
-    >
-        <ArrowLeft />
-    </button>
-);
+const CustomCarousel = ({ children, slidesToShow = 3 }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [slidesToShowCurrent, setSlidesToShowCurrent] = useState(slidesToShow);
 
-const NextArrow = ({ onClick }) => (
-    <button
-        onClick={onClick}
-        className="absolute top-1/2 right-0 -translate-y-1/2 -mr-6 z-10 p-2 rounded-full bg-white shadow-md hover:bg-gold transition-colors duration-200"
-    >
-        <ArrowRight />
-    </button>
-);
+    // Update slides to show based on screen size
+    React.useEffect(() => {
+        const updateSlidesToShow = () => {
+            if (window.innerWidth < 640) {
+                setSlidesToShowCurrent(1); // Mobile: 1 slide
+            } else if (window.innerWidth < 1024) {
+                setSlidesToShowCurrent(2); // Tablet: 2 slides
+            } else {
+                setSlidesToShowCurrent(3); // Desktop: 3 slides
+            }
+        };
+
+        updateSlidesToShow();
+        window.addEventListener('resize', updateSlidesToShow);
+        return () => window.removeEventListener('resize', updateSlidesToShow);
+    }, []);
+
+    const totalSlides = React.Children.count(children);
+    const maxIndex = Math.max(0, totalSlides - slidesToShowCurrent);
+
+    const next = () => {
+        setCurrentIndex(prev => Math.min(prev + 1, maxIndex));
+    };
+
+    const prev = () => {
+        setCurrentIndex(prev => Math.max(prev - 1, 0));
+    };
+
+    // Auto-slide functionality
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
+        }, 4000);
+        
+        return () => clearInterval(interval);
+    }, [maxIndex]);
+
+    const translateX = -(currentIndex * (100 / slidesToShowCurrent));
+
+    return (
+        <div className="relative overflow-hidden">
+            {/* Navigation Arrows */}
+            <button
+                onClick={prev}
+                disabled={currentIndex === 0}
+                className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white shadow-lg border transition-all duration-200 ${
+                    currentIndex === 0 
+                        ? 'opacity-50 cursor-not-allowed' 
+                        : 'hover:bg-yellow-400 hover:shadow-xl'
+                }`}
+                style={{ marginLeft: '-20px' }}
+            >
+                <ArrowLeft size={20} className="text-blue-900" />
+            </button>
+
+            <button
+                onClick={next}
+                disabled={currentIndex >= maxIndex}
+                className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white shadow-lg border transition-all duration-200 ${
+                    currentIndex >= maxIndex 
+                        ? 'opacity-50 cursor-not-allowed' 
+                        : 'hover:bg-yellow-400 hover:shadow-xl'
+                }`}
+                style={{ marginRight: '-20px' }}
+            >
+                <ArrowRight size={20} className="text-blue-900" />
+            </button>
+
+            {/* Carousel Container */}
+            <div className="mx-8">
+                <div 
+                    className="flex transition-transform duration-500 ease-in-out"
+                    style={{ transform: `translateX(${translateX}%)` }}
+                >
+                    {React.Children.map(children, (child, index) => (
+                        <div 
+                            key={index}
+                            className="flex-shrink-0 px-2"
+                            style={{ width: `${100 / slidesToShowCurrent}%` }}
+                        >
+                            {child}
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center mt-6 space-x-2">
+                {Array.from({ length: maxIndex + 1 }, (_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => setCurrentIndex(index)}
+                        className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                            currentIndex === index ? 'bg-yellow-400' : 'bg-gray-300'
+                        }`}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+};
 
 const Gallery = () => {
     const [currentPage, setCurrentPage] = useState(0);
@@ -252,46 +286,8 @@ const Gallery = () => {
         visible: { opacity: 1, y: 0 },
     };
 
-    const carouselSettings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        centerMode: true,
-        centerPadding: '0px',
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    centerMode: false,
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    centerMode: false,
-                }
-            },
-             {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    centerMode: false,
-                }
-            }
-        ]
-    };
-
     return (
-        <section id="gallery" className="py-20 bg-cream-white overflow-x-hidden text-deep-blue">
+        <section id="gallery" className="py-20 bg-amber-50 overflow-x-hidden text-blue-900">
             <div className="container mx-auto px-6">
                 <motion.h2
                     className="text-4xl font-extrabold text-center mb-12"
@@ -301,6 +297,7 @@ const Gallery = () => {
                 >
                     Photo Gallery
                 </motion.h2>
+                
                 <motion.div
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                     variants={containerVariants}
@@ -329,29 +326,44 @@ const Gallery = () => {
                         <button
                             onClick={() => setCurrentPage(prev => Math.max(0, prev - 1))}
                             disabled={currentPage === 0}
-                            className={`p-2 rounded-full border border-gold transition-colors duration-200 ${currentPage === 0 ? 'text-gray-400 cursor-not-allowed' : 'text-deep-blue hover:bg-gold hover:text-white'}`}
+                            className={`p-2 rounded-full border border-yellow-400 transition-colors duration-200 ${
+                                currentPage === 0 
+                                    ? 'text-gray-400 cursor-not-allowed' 
+                                    : 'text-blue-900 hover:bg-yellow-400 hover:text-white'
+                            }`}
                         >
                             <ArrowLeft size={20} />
                         </button>
+                        
                         {[...Array(pageCount)].map((_, index) => (
                             <button
                                 key={index}
                                 onClick={() => setCurrentPage(index)}
-                                className={`w-8 h-8 rounded-full text-sm font-bold transition-colors duration-200 ${currentPage === index ? 'bg-gold text-white' : 'bg-transparent text-deep-blue hover:bg-gold/20'}`}
+                                className={`w-8 h-8 rounded-full text-sm font-bold transition-colors duration-200 ${
+                                    currentPage === index 
+                                        ? 'bg-yellow-400 text-white' 
+                                        : 'bg-transparent text-blue-900 hover:bg-yellow-400/20'
+                                }`}
                             >
                                 {index + 1}
                             </button>
                         ))}
+                        
                         <button
                             onClick={() => setCurrentPage(prev => Math.min(pageCount - 1, prev + 1))}
                             disabled={currentPage === pageCount - 1}
-                            className={`p-2 rounded-full border border-gold transition-colors duration-200 ${currentPage === pageCount - 1 ? 'text-gray-400 cursor-not-allowed' : 'text-deep-blue hover:bg-gold hover:text-white'}`}
+                            className={`p-2 rounded-full border border-yellow-400 transition-colors duration-200 ${
+                                currentPage === pageCount - 1 
+                                    ? 'text-gray-400 cursor-not-allowed' 
+                                    : 'text-blue-900 hover:bg-yellow-400 hover:text-white'
+                            }`}
                         >
                             <ArrowRight size={20} />
                         </button>
                     </div>
                 )}
-                {/* --- */}
+
+                {/* Founders & Members Section */}
                 <motion.h2
                     className="text-4xl font-extrabold text-center my-12"
                     initial={{ opacity: 0, y: -20 }}
@@ -360,46 +372,69 @@ const Gallery = () => {
                 >
                     Our Founders & Members
                 </motion.h2>
-                <div className="relative">
-                    <Slider {...carouselSettings}>
-                        {members.map((member, index) => (
-                            <div key={index} className="p-4">
-                                <motion.div
-                                    className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105"
-                                    initial={{ opacity: 0, y: 50 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.8 }}
-                                >
-                                    <img
-                                        src={member.image}
-                                        alt={member.name}
-                                        className="w-40 h-40 rounded-full object-cover mb-4 border-4 border-gold"
-                                    />
-                                    <h3 className="text-xl font-bold">{member.name}</h3>
-                                    <p className="text-warm-gray mb-4">{member.title}</p>
-                                    <div className="flex space-x-4">
-                                        {member.social.twitter && member.social.twitter !== '#' && member.social.twitter !== '' && (
-                                            <a href={member.social.twitter} target="_blank" rel="noopener noreferrer" className="text-deep-blue hover:text-gold transition-colors duration-200">
-                                                <Twitter size={24} />
-                                            </a>
-                                        )}
-                                        {member.social.facebook && member.social.facebook !== '#' && member.social.facebook !== '' && (
-                                            <a href={member.social.facebook} target="_blank" rel="noopener noreferrer" className="text-deep-blue hover:text-gold transition-colors duration-200">
-                                                <Facebook size={24} />
-                                            </a>
-                                        )}
-                                        {member.social.linkedin && member.social.linkedin !== '#' && member.social.linkedin !== '' && (
-                                            <a href={member.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-deep-blue hover:text-gold transition-colors duration-200">
-                                                <Linkedin size={24} />
-                                            </a>
-                                        )}
-                                    </div>
-                                </motion.div>
+
+                <CustomCarousel>
+                    {members.map((member, index) => (
+                        <motion.div
+                            key={index}
+                            className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105 mx-2"
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <img
+                                src={member.image}
+                                alt={member.name}
+                                className="w-40 h-40 rounded-full object-cover mb-4 border-4 border-yellow-400"
+                            />
+                            <h3 className="text-xl font-bold text-blue-900">{member.name}</h3>
+                            <p className="text-gray-600 mb-4">{member.title}</p>
+                            <div className="flex space-x-4">
+                                {member.social.twitter && member.social.twitter !== '#' && member.social.twitter !== '' && (
+                                    <a 
+                                        href={member.social.twitter} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        className="text-blue-900 hover:text-yellow-500 transition-colors duration-200"
+                                    >
+                                        <Twitter size={24} />
+                                    </a>
+                                )}
+                                {member.social.facebook && member.social.facebook !== '#' && member.social.facebook !== '' && (
+                                    <a 
+                                        href={member.social.facebook} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        className="text-blue-900 hover:text-yellow-500 transition-colors duration-200"
+                                    >
+                                        <Facebook size={24} />
+                                    </a>
+                                )}
+                                {member.social.linkedin && member.social.linkedin !== '#' && member.social.linkedin !== '' && (
+                                    <a 
+                                        href={member.social.linkedin} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        className="text-blue-900 hover:text-yellow-500 transition-colors duration-200"
+                                    >
+                                        <Linkedin size={24} />
+                                    </a>
+                                )}
+                                {/* {member.social.tiktok && member.social.tiktok !== '#' && member.social.tiktok !== '' && (
+                                    <a 
+                                        href={member.social.tiktok} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        className="text-blue-900 hover:text-yellow-500 transition-colors duration-200"
+                                    >
+                                        <Tiktok size={24} />
+                                    </a>
+                                )} */}
                             </div>
-                        ))}
-                    </Slider>
-                </div>
+                        </motion.div>
+                    ))}
+                </CustomCarousel>
             </div>
         </section>
     );
