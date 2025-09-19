@@ -10,6 +10,7 @@ import GetInvolved from './components/GetInvolved';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Gallery from './components/Gallery';
+import Founder from './components/Founder';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
       <main>
         <Hero />
         <About />
+        <Founder />
         <Mission />
         <Gallery/>
         <Impact />
