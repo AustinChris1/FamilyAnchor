@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Twitter, Facebook, Linkedin } from 'lucide-react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// Data for all founders and members with social links
 const members = [
     {
         name: 'Lady Patience Oguine',
@@ -111,7 +110,6 @@ const members = [
     },
 ];
 
-// All images excluding landing and named people
 const allGalleryImages = [
     '/images/IMG-20201108-WA0010.jpg',
     '/images/IMG-20201108-WA0012.jpg',
@@ -213,7 +211,6 @@ const allGalleryImages = [
     '/images/Screenshot_20250918_221023.jpg'
 ];
 
-// Custom Arrow Components for react-slick
 const PrevArrow = ({ onClick }) => (
     <button
         onClick={onClick}
@@ -273,7 +270,6 @@ const Gallery = () => {
                 settings: {
                     slidesToShow: 2,
                     centerMode: false,
-                    centerPadding: '0px',
                 }
             },
             {
@@ -281,7 +277,6 @@ const Gallery = () => {
                 settings: {
                     slidesToShow: 1,
                     centerMode: false,
-                    centerPadding: '0px',
                 }
             }
         ]

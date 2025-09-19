@@ -2,9 +2,10 @@ import React, { useRef, useEffect } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import * as THREE from 'three';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade } from 'swiper/modules';
+import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
+import 'swiper/css/pagination'; // Import the pagination styles
 
 // Import the specific images you want for the hero slider
 const heroImages = [
@@ -28,19 +29,15 @@ const ParticleStarfield = () => {
 
         let scene, camera, renderer, particles;
 
-        // Function to initialize the scene
         const init = () => {
-            // Set up scene, camera, and renderer
             scene = new THREE.Scene();
             camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            
-            // Set renderer size to full viewport
+
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(window.devicePixelRatio);
             currentMount.appendChild(renderer.domElement);
 
-            // Create particles
             const particlesGeometry = new THREE.BufferGeometry();
             const particlesCount = 10000;
             const positions = new Float32Array(particlesCount * 3);
@@ -50,7 +47,7 @@ const ParticleStarfield = () => {
                 positions[i] = (Math.random() - 0.5) * 10;
                 positions[i + 1] = (Math.random() - 0.5) * 10;
                 positions[i + 2] = (Math.random() - 0.5) * 10;
-                colors[i] = 1; // Gold color
+                colors[i] = 1;
                 colors[i + 1] = 0.78;
                 colors[i + 2] = 0.17;
             }
@@ -71,7 +68,6 @@ const ParticleStarfield = () => {
             camera.position.z = 2;
         };
 
-        // Animation loop
         const clock = new THREE.Clock();
         const animate = () => {
             const elapsedTime = clock.getElapsedTime();
@@ -84,7 +80,6 @@ const ParticleStarfield = () => {
             renderer.render(scene, camera);
         };
 
-        // Handle window resizing
         const handleResize = () => {
             if (renderer && camera) {
                 camera.aspect = window.innerWidth / window.innerHeight;
@@ -97,13 +92,11 @@ const ParticleStarfield = () => {
         animate();
         window.addEventListener('resize', handleResize);
 
-        // Cleanup function
         return () => {
             window.removeEventListener('resize', handleResize);
             if (currentMount && renderer.domElement) {
                 currentMount.removeChild(renderer.domElement);
             }
-            // Dispose of Three.js objects to prevent memory leaks
             if (particles) {
                 particles.geometry.dispose();
                 particles.material.dispose();
@@ -114,13 +107,13 @@ const ParticleStarfield = () => {
         };
     }, []);
 
-    // Use `fixed` to ensure it always covers the full viewport
-    return <div ref={mountRef} className="fixed top-0 left-0 w-full h-full opacity-30 z-0" />;
+    // Change 'fixed' to 'absolute' to contain it within its parent
+    return <div ref={mountRef} className="absolute top-0 left-0 w-full h-full opacity-30 z-0" />;
 };
 
 const Hero = () => {
     const scrollRef = useRef(null);
-    const isInView = useInView(scrollRef);
+    const isInView = useInView(scrollRef, { once: true, amount: 0.5 });
     const controls = useAnimation();
 
     useEffect(() => {
@@ -150,7 +143,7 @@ const Hero = () => {
         <div className="overflow-x-hidden">
             <section id="home" className="relative min-h-screen flex items-center bg-deep-blue justify-center">
                 <ParticleStarfield />
-                
+
                 <div className="relative z-20 container mx-auto px-6 h-full flex flex-col md:flex-row items-center md:justify-between text-center md:text-left pt-24 pb-12 md:py-0">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
@@ -158,8 +151,8 @@ const Hero = () => {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="max-w-xl mx-auto md:mx-0 md:w-1/2"
                     >
-                        <motion.h1 
-                            ref={scrollRef} 
+                        <motion.h1
+                            ref={scrollRef}
                             variants={variants}
                             initial="hidden"
                             animate={controls}
@@ -180,27 +173,28 @@ const Hero = () => {
                             A Mission for Hope
                         </motion.p>
                     </motion.div>
-                    
-                    <div className="relative w-full h-[50vh] md:w-1/2 md:h-[60vh] mt-12 md:mt-0 md:ml-12 overflow-hidden rounded-xl shadow-2xl">
+
+                    {/* Adjusted dimensions for larger images */}
+                    <div className="relative w-full h-[60vh] md:w-1/2 md:h-[70vh] mt-12 md:mt-0 md:ml-12 rounded-xl shadow-2xl">
                         <Swiper
-                            modules={[Autoplay, EffectFade]}
+                            modules={[Autoplay, EffectFade, Pagination]}
                             effect="fade"
                             autoplay={{ delay: 5000, disableOnInteraction: false }}
                             loop={true}
                             speed={1000}
-                            className="w-full h-full"
+                            pagination={{ clickable: true }}
+                            className="w-full h-full rounded-xl"
                         >
                             {heroImages.map((img, index) => (
                                 <SwiperSlide key={index}>
-                                    <img 
-                                        src={img.src} 
-                                        alt={img.alt} 
-                                        className="object-cover w-full h-full"
+                                    <img
+                                        src={img.src}
+                                        alt={img.alt}
+                                        className="object-contain w-full h-full"
                                     />
                                 </SwiperSlide>
                             ))}
                         </Swiper>
-                        {/* Removed the overlay for a cleaner look and to let the image shine */}
                     </div>
                 </div>
 
