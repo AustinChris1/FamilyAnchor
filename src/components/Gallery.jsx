@@ -82,7 +82,7 @@ const members = [
         social: { twitter: '#', facebook: '#', linkedin: '#' }
     },
     {
-        name: 'Pastor Mrs. Gloria Mbaoma, Esq.',
+        name: 'Pastor Mrs. Gloria Mbaoma. Esq.',
         title: 'Board Member',
         image: '/images/Gloria%20Mbaoma.jpg',
         social: { twitter: '#', facebook: '#', linkedin: '#' }
