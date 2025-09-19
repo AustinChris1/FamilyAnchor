@@ -5,9 +5,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
-import 'swiper/css/pagination'; // Import the pagination styles
+import 'swiper/css/pagination';
 
-// Import the specific images you want for the hero slider
 const heroImages = [
     { src: '/images/landing8.jpg', alt: 'Family Anchor' },
     { src: '/images/landing1.jpg', alt: 'Family Anchor' },
@@ -107,7 +106,6 @@ const ParticleStarfield = () => {
         };
     }, []);
 
-    // Change 'fixed' to 'absolute' to contain it within its parent
     return <div ref={mountRef} className="absolute top-0 left-0 w-full h-full opacity-30 z-0" />;
 };
 

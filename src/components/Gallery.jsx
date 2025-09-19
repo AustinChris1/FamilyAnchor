@@ -22,7 +22,7 @@ const members = [
         name: 'Godson Ugochukwu Oguine. Esq.',
         title: 'Secretary of the Board',
         image: '/images/GodsonUgochukwu.jpg',
-        social: { twitter: '#', facebook: '#', linkedin: '#' }
+        social: { twitter: '#', facebook: 'https://www.facebook.com/share/18m55rF7GC/', linkedin: '#' }
     },
     {
         name: 'Mr. Charles Orji',
@@ -276,6 +276,14 @@ const Gallery = () => {
                 breakpoint: 768,
                 settings: {
                     slidesToShow: 1,
+                    centerMode: false,
+                }
+            },
+             {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
                     centerMode: false,
                 }
             }
