@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import {Mail, Facebook, Instagram} from 'lucide-react';
+import {Mail, Facebook, Instagram, Phone} from 'lucide-react';
 
 const Footer = () => {
     return (
@@ -34,6 +34,9 @@ const Footer = () => {
                         </motion.a>
                         <motion.a href="https://instagram.com/familyanchorministry" whileHover={{ scale: 1.2, color: '#FFC72C' }} transition={{ type: 'spring', stiffness: 300 }} className="text-warm-gray">
                         <Instagram/>
+                        </motion.a>
+                        <motion.a href="tel:+2348033116735" whileHover={{ scale: 1.2, color: '#FFC72C' }} transition={{ type: 'spring', stiffness: 300 }} className="text-warm-gray">
+                        <Phone/>
                         </motion.a>
                     </div>
                     <div className="border-t border-warm-gray/30 mt-8 pt-8">

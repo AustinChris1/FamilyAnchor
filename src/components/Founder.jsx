@@ -92,9 +92,11 @@ const Founder = () => {
                         variants={imageVariants}
                     >
                         <div className="relative group">
+                            {/* Decorative background elements */}
                             <div className="absolute -inset-4 bg-gradient-to-r from-blue-800 via-blue-900 to-deep-blue rounded-2xl blur-2xl opacity-25 group-hover:opacity-40 transition-opacity duration-500"></div>
                             <div className="absolute -inset-2 bg-gradient-to-r from-deep-blue to-deep-blue rounded-2xl opacity-20"></div>
                             
+                            {/* Main image container */}
                             <div className="relative bg-white p-3 rounded-2xl shadow-2xl transform transition-transform duration-300 group-hover:scale-105">
                                 <div className="relative overflow-hidden rounded-xl">
                                     <img
@@ -104,6 +106,7 @@ const Founder = () => {
                                     />
                                 </div>
                                 
+                                {/* Floating quote bubble */}
                                 <div className="absolute -top-6 -right-6 bg-white rounded-full p-4 shadow-lg border-2 border-amber-200">
                                     <div className="w-8 h-8 bg-gradient-to-br from-amber-400 to-gold rounded-full flex items-center justify-center">
                                         <span className="text-white text-xl font-bold">"</span>
@@ -123,7 +126,7 @@ const Founder = () => {
                     >
                         <motion.div variants={paragraphVariants}>
                             <div className="bg-gradient-to-r from-deep-blue to-blue-500 bg-clip-text text-transparent font-bold text-2xl lg:text-3xl leading-tight mb-6">
-                                A journey born of divine intervention and steadfast faith, Lady Patience Uzoma Oguine's story is one of a life transformed for a greater purpose.
+                                Lady Patience Uzoma Oguine’s journey is nothing short of miraculous. It is a story of divine intervention, steadfast faith, and a heart surrendered to God's calling. What began as a personal encounter with the Lord in 1981, in the most unexpected of places, forever changed the course of her life.
                             </div>
                         </motion.div>
 
@@ -138,7 +141,7 @@ const Founder = () => {
                                 <div>
                                     <h3 className="font-bold text-xl text-slate-800 mb-3">The Divine Encounter</h3>
                                     <p className="text-slate-700 leading-relaxed">
-                                        It began on a midnight in 1981 during a pilgrimage to Jerusalem. While resting in her hotel, she was lifted by an unseen force and heard a clear, divine voice: <span className="font-semibold italic text-amber-700">"That old thing needs to go out of your life... where we are going, there is no discrimination."</span> This powerful encounter was a sacred commissioning, marking the beginning of her ministry for children and families.
+                                        It was the midnight of July 19, 1981, during a Jerusalem Pilgrimage with her husband, when Lady Patience experienced a life-altering vision. While resting at Sharon Hotel in Israel, she found herself lifted from her bed by an unseen force, her entire being overwhelmed by a divine presence. In that sacred moment, the voice of the Lord spoke clearly, <span className="font-semibold italic text-amber-700">“That old thing need to go out of your life... where we are going, there is no discrimination.”</span>
                                     </p>
                                 </div>
                             </div>
@@ -153,7 +156,7 @@ const Founder = () => {
                                     <h4 className="font-semibold text-slate-800">Divine Mission</h4>
                                 </div>
                                 <p className="italic text-slate-700 leading-relaxed">
-                                    Driven by this vision, she dedicated herself to God's work, establishing impactful ministries like the Anglican Children Ministry and the Anglican Church of Resurrection.
+                                    Upon returning to Nigeria, this newfound purpose drove her to dedicate herself to the work of God's kingdom, particularly in the area of children’s ministry. Her commitment led to the establishment of several impactful ministries, including Anglican Children Ministry (ACM) Woliwo Onitsha, Anglican Children Ministry (ACM) Osumenyi, and the Anglican Church of Resurrection Woliwo Onitsha.
                                 </p>
                             </div>
                         </motion.div>
@@ -172,7 +175,7 @@ const Founder = () => {
                                 <div>
                                     <h4 className="font-semibold text-slate-800 mb-2">Global Impact</h4>
                                     <p className="text-slate-700 leading-relaxed">
-                                        As a passionate evangelist and church builder, Lady Patience has traveled extensively, leaving a lasting impact wherever she goes. Her tireless efforts have seen the Church of Resurrection grow to serve over <span className="font-bold text-amber-600">1000 worshippers</span>—a true testament to her dedication.
+                                        As a passionate evangelist and church builder, Lady Patience has traveled extensively, leaving a lasting impact wherever she goes. Her tireless efforts have seen the Church of Resurrection grow to serve over <span className="font-bold text-amber-600">1000 worshippers</span>—a true testament to her dedication and obedience to God’s calling.
                                     </p>
                                 </div>
                             </div>
@@ -187,7 +190,7 @@ const Founder = () => {
                                     <h4 className="font-semibold text-slate-800">A Legacy of Love</h4>
                                 </div>
                                 <p className="text-slate-700 leading-relaxed">
-                                    A mother of <span className="font-bold text-amber-700">11</span>, she has raised a legacy of faith and service that spans generations. Her life stands as a powerful reminder of the transformative power of God's love and the difference one faithful servant can make in the world.
+                                    A mother to <span className="font-bold text-amber-700">11</span> children, with many grandchildren and great-grandchildren, Lady Patience has raised a legacy of faith and service that extends across generations. Her life is a powerful reminder of the transformative power of God’s love and the difference one faithful servant can make in the world.
                                 </p>
                             </div>
                         </motion.div>

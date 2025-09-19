@@ -3,6 +3,7 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
+import { Phone } from 'lucide-react';
 
 const Contact = () => {
     const form = useRef();
@@ -66,6 +67,27 @@ const Contact = () => {
                             Osumenyi, Nnewi south L.G.A.<br/>
                             Anambra State, Nigeria.
                         </p>
+                        <h3 className="text-2xl font-bold text-gold mt-8 mb-4">Phone</h3>
+                        <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                            <motion.a 
+                                href='tel:+2348033116735'
+                                className="inline-flex items-center justify-center p-3 rounded-xl border border-gold text-gold hover:bg-gold hover:text-deep-blue transition-colors duration-300"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <Phone className="mr-2" />
+                                +234 803 311 6735
+                            </motion.a>
+                            <motion.a 
+                                href='tel:+2347035108928'
+                                className="inline-flex items-center justify-center p-3 rounded-xl border border-gold text-gold hover:bg-gold hover:text-deep-blue transition-colors duration-300"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <Phone className="mr-2" />
+                                +234 703 510 8928
+                            </motion.a>
+                        </div>
                     </motion.div>
                     <motion.div
                         className="bg-deep-blue p-8 rounded-2xl shadow-xl"
