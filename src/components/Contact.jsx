@@ -1,4 +1,3 @@
-// src/components/Contact.jsx
 
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
@@ -16,7 +15,6 @@ const Contact = () => {
             .then((result) => {
                 console.log(result.text);
                 setStatus('success');
-                // Clear the form after successful submission
                 form.current.reset();
             }, (error) => {
                 console.log(error.text);

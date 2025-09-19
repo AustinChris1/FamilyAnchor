@@ -53,14 +53,12 @@ const Founder = () => {
 
     return (
         <section id="founder" className="py-20 bg-gradient-to-br from-cream-white via-orange-50 to-yellow-50 text-slate-800 relative overflow-hidden">
-            {/* Elegant Background Pattern */}
             <div className="absolute inset-0 opacity-10">
                 <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-amber-300 to-orange-300 rounded-full -translate-x-32 -translate-y-32 blur-3xl"></div>
                 <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-br from-yellow-300 to-amber-300 rounded-full translate-x-32 translate-y-32 blur-3xl"></div>
                 <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-br from-orange-200 to-amber-200 rounded-full -translate-x-1/2 -translate-y-1/2 blur-2xl"></div>
             </div>
 
-            {/* Decorative Elements */}
             <div className="absolute top-10 left-10 w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
             <div className="absolute top-20 right-20 w-3 h-3 bg-gold rounded-full animate-pulse delay-75"></div>
             <div className="absolute bottom-20 left-20 w-2 h-2 bg-yellow-400 rounded-full animate-pulse delay-150"></div>
@@ -83,7 +81,6 @@ const Founder = () => {
                 </motion.div>
 
                 <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-                    {/* Image Section */}
                     <motion.div
                         className="flex justify-center lg:justify-end order-2 lg:order-1"
                         initial="hidden"
@@ -92,11 +89,9 @@ const Founder = () => {
                         variants={imageVariants}
                     >
                         <div className="relative group">
-                            {/* Decorative background elements */}
                             <div className="absolute -inset-4 bg-gradient-to-r from-blue-800 via-blue-900 to-deep-blue rounded-2xl blur-2xl opacity-25 group-hover:opacity-40 transition-opacity duration-500"></div>
                             <div className="absolute -inset-2 bg-gradient-to-r from-deep-blue to-deep-blue rounded-2xl opacity-20"></div>
                             
-                            {/* Main image container */}
                             <div className="relative bg-white p-3 rounded-2xl shadow-2xl transform transition-transform duration-300 group-hover:scale-105">
                                 <div className="relative overflow-hidden rounded-xl">
                                     <img
@@ -106,7 +101,6 @@ const Founder = () => {
                                     />
                                 </div>
                                 
-                                {/* Floating quote bubble */}
                                 <div className="absolute -top-6 -right-6 bg-white rounded-full p-4 shadow-lg border-2 border-amber-200">
                                     <div className="w-8 h-8 bg-gradient-to-br from-amber-400 to-gold rounded-full flex items-center justify-center">
                                         <span className="text-white text-xl font-bold">"</span>
@@ -126,10 +120,9 @@ const Founder = () => {
                     >
                         <motion.div variants={paragraphVariants}>
                             <div className="bg-gradient-to-r from-deep-blue to-blue-500 bg-clip-text text-transparent font-bold text-2xl lg:text-3xl leading-tight mb-6">
-                                Lady Patience Uzoma Oguine’s journey is nothing short of miraculous. It is a story of divine intervention, steadfast faith, and a heart surrendered to God's calling. What began as a personal encounter with the Lord in 1981, in the most unexpected of places, forever changed the course of her life.
+                                A journey born of divine intervention and steadfast faith, Lady Patience Uzoma Oguine's story is one of a life transformed for a greater purpose.
                             </div>
                         </motion.div>
-
                         <motion.div
                             variants={paragraphVariants}
                             className="bg-gradient-to-br from-white to-amber-50 p-8 rounded-2xl shadow-lg border border-amber-100"
@@ -175,7 +168,7 @@ const Founder = () => {
                                 <div>
                                     <h4 className="font-semibold text-slate-800 mb-2">Global Impact</h4>
                                     <p className="text-slate-700 leading-relaxed">
-                                        As a passionate evangelist and church builder, Lady Patience has traveled extensively, leaving a lasting impact wherever she goes. Her tireless efforts have seen the Church of Resurrection grow to serve over <span className="font-bold text-amber-600">1000 worshippers</span>—a true testament to her dedication and obedience to God’s calling.
+                                        As a passionate evangelist and church builder, Lady Patience has traveled extensively, leaving a lasting impact wherever she goes. Her tireless efforts have seen the Church of Resurrection grow to serve over <span className="font-bold text-amber-600">1000 Bible-believing converts and worshippers</span>—a true testament to her dedication and obedience to God’s calling.
                                     </p>
                                 </div>
                             </div>
