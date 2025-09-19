@@ -19,6 +19,13 @@ const GetInvolved = () => {
             icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M12 20.354V15a4 4 0 01-4-4v-1.556c0-1.83 2.185-3.084 4-2.45m0 0A3.003 3.003 0 0014 11h-4.354M17.5 14h-11a2 2 0 00-2 2v4a2 2 0 002 2h11a2 2 0 002-2v-4a2 2 0 00-2-2z" /></svg>
         }
     ];
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+            setMenuOpen(false);
+        }
+    };
 
     return (
         <section id="getinvolved" className="py-20 lg:py-32 overflow-x-hidden bg-deep-blue text-cream-white">
@@ -36,11 +43,12 @@ const GetInvolved = () => {
                     {actions.map((action, index) => (
                         <motion.div 
                             key={index}
-                            className="p-8 rounded-2xl shadow-xl flex flex-col items-center text-center bg-deep-blue border-t-4 border-gold"
+                            className="p-8 rounded-2xl shadow-xl flex flex-col items-center text-center bg-deep-blue border-t-4 border-gold cursor-pointer"
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.5 }}
                             transition={{ duration: 0.6, delay: index * 0.2 }}
+                            onClick={() => scrollToSection('contact')}
                         >
                             <div className="text-gold mb-4">{action.icon}</div>
                             <h3 className="text-2xl font-bold text-gold mb-3">{action.title}</h3>

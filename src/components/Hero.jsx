@@ -200,7 +200,7 @@ const Hero = () => {
                     <motion.div
                         animate={{ y: [0, 10, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                        onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
+                        onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
                     >
                         <svg className="w-8 h-8 text-cream-white cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
                     </motion.div>

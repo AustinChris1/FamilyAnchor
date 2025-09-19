@@ -19,7 +19,13 @@ const members = [
         name: 'Godson Ugochukwu Oguine. Esq.',
         title: 'Secretary of the Board',
         image: '/images/GodsonUgochukwu.jpg',
-        social: { twitter: '#', facebook: 'https://www.facebook.com/share/18m55rF7GC/', linkedin: '#', tiktok:'https://tiktok.com/ogugodson' }
+        social: { twitter: '#', facebook: '#', linkedin: '#'}
+    },
+    {
+        name: 'Dame Ezinne Ifeyinwa Ukachukwu',
+        title: 'Treasurer of the Board',
+        image: '/images/Dame%20Ezinne%20Ifeyinwa%20Ukachukwu.jpg',
+        social: { twitter: '#', facebook: '#', linkedin: '#' }
     },
     {
         name: 'Mr. Charles Orji',
@@ -46,13 +52,13 @@ const members = [
         social: { twitter: '#', facebook: '#', linkedin: '#' }
     },
     {
-        name: 'Ada Mbanaso',
+        name: 'Mrs. Ada Mbanaso',
         title: 'Board Member',
         image: '/images/Ada%20Mbanaso.jpg',
         social: { twitter: '#', facebook: '#', linkedin: '#' }
     },
     {
-        name: 'Sir Chuma Oguine',
+        name: 'Sir. Chuma Oguine',
         title: 'Board Member',
         image: '/images/chumaOguine.jpg',
         social: { twitter: '#', facebook: '#', linkedin: '#' }
@@ -64,7 +70,7 @@ const members = [
         social: { twitter: '#', facebook: '#', linkedin: '#' }
     },
     {
-        name: 'Mrs Charity Oguine',
+        name: 'Mrs. Charity Oguine',
         title: 'Board Member',
         image: '/images/Mrs%20Charity%20Oguine.jpg',
         social: { twitter: '#', facebook: '#', linkedin: '#' }
@@ -76,19 +82,13 @@ const members = [
         social: { twitter: '#', facebook: '#', linkedin: '#' }
     },
     {
-        name: 'Dame Ezinne Ifeyinwa Ukachukwu',
-        title: 'Board Member',
-        image: '/images/Dame%20Ezinne%20Ifeyinwa%20Ukachukwu.jpg',
-        social: { twitter: '#', facebook: '#', linkedin: '#' }
-    },
-    {
         name: 'Pastor Mrs. Gloria Mbaoma, Esq.',
         title: 'Board Member',
         image: '/images/Gloria%20Mbaoma.jpg',
         social: { twitter: '#', facebook: '#', linkedin: '#' }
     },
     {
-        name: 'Chinyere Ijezie',
+        name: 'Chinny Ijezie',
         title: 'Board Member',
         image: '/images/chinnyIjezie.jpg',
         social: { twitter: '#', facebook: '#', linkedin: '#' }
@@ -161,15 +161,14 @@ const CustomCarousel = ({ children, slidesToShow = 3 }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [slidesToShowCurrent, setSlidesToShowCurrent] = useState(slidesToShow);
 
-    // Update slides to show based on screen size
     React.useEffect(() => {
         const updateSlidesToShow = () => {
             if (window.innerWidth < 640) {
-                setSlidesToShowCurrent(1); // Mobile: 1 slide
+                setSlidesToShowCurrent(1);
             } else if (window.innerWidth < 1024) {
-                setSlidesToShowCurrent(2); // Tablet: 2 slides
+                setSlidesToShowCurrent(2);
             } else {
-                setSlidesToShowCurrent(3); // Desktop: 3 slides
+                setSlidesToShowCurrent(3);
             }
         };
 
@@ -202,7 +201,6 @@ const CustomCarousel = ({ children, slidesToShow = 3 }) => {
 
     return (
         <div className="relative overflow-hidden">
-            {/* Navigation Arrows */}
             <button
                 onClick={prev}
                 disabled={currentIndex === 0}
@@ -229,7 +227,6 @@ const CustomCarousel = ({ children, slidesToShow = 3 }) => {
                 <ArrowRight size={20} className="text-blue-900" />
             </button>
 
-            {/* Carousel Container */}
             <div className="mx-8">
                 <div 
                     className="flex transition-transform duration-500 ease-in-out"
@@ -247,7 +244,6 @@ const CustomCarousel = ({ children, slidesToShow = 3 }) => {
                 </div>
             </div>
 
-            {/* Dots Indicator */}
             <div className="flex justify-center mt-6 space-x-2">
                 {Array.from({ length: maxIndex + 1 }, (_, index) => (
                     <button
@@ -320,7 +316,6 @@ const Gallery = () => {
                     ))}
                 </motion.div>
 
-                {/* Pagination Controls */}
                 {pageCount > 1 && (
                     <div className="flex justify-center items-center mt-12 space-x-2">
                         <button
@@ -363,7 +358,6 @@ const Gallery = () => {
                     </div>
                 )}
 
-                {/* Founders & Members Section */}
                 <motion.h2
                     className="text-4xl font-extrabold text-center my-12"
                     initial={{ opacity: 0, y: -20 }}
@@ -421,16 +415,6 @@ const Gallery = () => {
                                         <Linkedin size={24} />
                                     </a>
                                 )}
-                                {/* {member.social.tiktok && member.social.tiktok !== '#' && member.social.tiktok !== '' && (
-                                    <a 
-                                        href={member.social.tiktok} 
-                                        target="_blank" 
-                                        rel="noopener noreferrer" 
-                                        className="text-blue-900 hover:text-yellow-500 transition-colors duration-200"
-                                    >
-                                        <Tiktok size={24} />
-                                    </a>
-                                )} */}
                             </div>
                         </motion.div>
                     ))}
