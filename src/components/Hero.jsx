@@ -1,5 +1,3 @@
-// src/components/Hero.jsx
-
 import React, { useRef, useEffect } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import * as THREE from 'three';
@@ -10,10 +8,15 @@ import 'swiper/css/effect-fade';
 
 // Import the specific images you want for the hero slider
 const heroImages = [
-    { src: '/images/face1.jpeg', alt: 'Family Anchor' },
-    { src: '/images/face2.jpeg', alt: 'A mission for hope' },
-    { src: '/images/IMG-20250825-WA0020.jpg', alt: 'Empowering communities' },
-    { src: '/images/face3.jpeg', alt: 'Empowering communities' },
+    { src: '/images/landing8.jpg', alt: 'Family Anchor' },
+    { src: '/images/landing1.jpg', alt: 'Family Anchor' },
+    { src: '/images/landing2.jpg', alt: 'Family Anchor' },
+    { src: '/images/landing3.jpg', alt: 'Family Anchor' },
+    { src: '/images/landing4.jpg', alt: 'Family Anchor' },
+    { src: '/images/landing5.jpg', alt: 'Family Anchor' },
+    { src: '/images/landing6.jpg', alt: 'Family Anchor' },
+    { src: '/images/landing7.jpg', alt: 'Family Anchor' },
+    { src: '/images/landing9.jpg', alt: 'Family Anchor' },
 ];
 
 const ParticleStarfield = () => {
@@ -23,70 +26,96 @@ const ParticleStarfield = () => {
         const currentMount = mountRef.current;
         if (!currentMount) return;
 
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, currentMount.clientWidth / currentMount.clientHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        let scene, camera, renderer, particles;
 
-        renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
-        currentMount.appendChild(renderer.domElement);
+        // Function to initialize the scene
+        const init = () => {
+            // Set up scene, camera, and renderer
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            
+            // Set renderer size to full viewport
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            currentMount.appendChild(renderer.domElement);
 
-        const particlesGeometry = new THREE.BufferGeometry();
-        const particlesCount = 10000;
-        const positions = new Float32Array(particlesCount * 3);
-        const colors = new Float32Array(particlesCount * 3);
+            // Create particles
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 10000;
+            const positions = new Float32Array(particlesCount * 3);
+            const colors = new Float32Array(particlesCount * 3);
 
-        for (let i = 0; i < particlesCount * 3; i += 3) {
-            positions[i] = (Math.random() - 0.5) * 10;
-            positions[i + 1] = (Math.random() - 0.5) * 10;
-            positions[i + 2] = (Math.random() - 0.5) * 10;
-            colors[i] = 1;
-            colors[i + 1] = 0.78;
-            colors[i + 2] = 0.17;
-        }
+            for (let i = 0; i < particlesCount * 3; i += 3) {
+                positions[i] = (Math.random() - 0.5) * 10;
+                positions[i + 1] = (Math.random() - 0.5) * 10;
+                positions[i + 2] = (Math.random() - 0.5) * 10;
+                colors[i] = 1; // Gold color
+                colors[i + 1] = 0.78;
+                colors[i + 2] = 0.17;
+            }
 
-        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-        const particlesMaterial = new THREE.PointsMaterial({
-            size: 0.02,
-            vertexColors: true,
-            sizeAttenuation: true,
-            blending: THREE.AdditiveBlending
-        });
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.02,
+                vertexColors: true,
+                sizeAttenuation: true,
+                blending: THREE.AdditiveBlending
+            });
 
-        const particles = new THREE.Points(particlesGeometry, particlesMaterial);
-        scene.add(particles);
+            particles = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particles);
 
-        camera.position.z = 2;
+            camera.position.z = 2;
+        };
 
+        // Animation loop
         const clock = new THREE.Clock();
-
         const animate = () => {
             const elapsedTime = clock.getElapsedTime();
-            particles.rotation.y = elapsedTime * 0.02;
-            particles.rotation.x = elapsedTime * 0.01;
-            particles.material.size = 0.02 + Math.sin(elapsedTime * 0.5) * 0.01;
+            if (particles) {
+                particles.rotation.y = elapsedTime * 0.02;
+                particles.rotation.x = elapsedTime * 0.01;
+                particles.material.size = 0.02 + Math.sin(elapsedTime * 0.5) * 0.01;
+            }
             requestAnimationFrame(animate);
             renderer.render(scene, camera);
         };
-        animate();
 
+        // Handle window resizing
         const handleResize = () => {
-            camera.aspect = currentMount.clientWidth / currentMount.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
+            if (renderer && camera) {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
         };
 
+        init();
+        animate();
         window.addEventListener('resize', handleResize);
 
+        // Cleanup function
         return () => {
             window.removeEventListener('resize', handleResize);
-            currentMount.removeChild(renderer.domElement);
+            if (currentMount && renderer.domElement) {
+                currentMount.removeChild(renderer.domElement);
+            }
+            // Dispose of Three.js objects to prevent memory leaks
+            if (particles) {
+                particles.geometry.dispose();
+                particles.material.dispose();
+            }
+            if (renderer) {
+                renderer.dispose();
+            }
         };
     }, []);
 
-    return <div ref={mountRef} className="absolute top-0 left-0 w-full h-full opacity-30" />;
+    // Use `fixed` to ensure it always covers the full viewport
+    return <div ref={mountRef} className="fixed top-0 left-0 w-full h-full opacity-30 z-0" />;
 };
 
 const Hero = () => {
@@ -152,7 +181,7 @@ const Hero = () => {
                         </motion.p>
                     </motion.div>
                     
-                    <div className="relative w-full h-[50vh] md:w-1/2 md:h-full mt-12 md:mt-0 md:ml-12 overflow-hidden rounded-xl shadow-2xl">
+                    <div className="relative w-full h-[50vh] md:w-1/2 md:h-[60vh] mt-12 md:mt-0 md:ml-12 overflow-hidden rounded-xl shadow-2xl">
                         <Swiper
                             modules={[Autoplay, EffectFade]}
                             effect="fade"
@@ -171,7 +200,7 @@ const Hero = () => {
                                 </SwiperSlide>
                             ))}
                         </Swiper>
-                        <div className="absolute top-0 left-0 w-full h-full bg-deep-blue/60 z-10 hidden md:block" />
+                        {/* Removed the overlay for a cleaner look and to let the image shine */}
                     </div>
                 </div>
 

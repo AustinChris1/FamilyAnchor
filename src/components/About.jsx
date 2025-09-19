@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const About = () => {
     return (
-        <section id="about" className="py-20 lg:py-32 overflow-x-hidden bg-cream-white">
+        <section id="about" className="py-20 lg:py-32 overflow-x-hidden bg-cream-white z-30">
             <div className="container mx-auto px-6">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                     <motion.div 
