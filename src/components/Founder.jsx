@@ -105,7 +105,7 @@ const Founder = () => {
                                     <div>
                                         <h3 className="font-bold text-xl text-deep-blue mb-3">The Divine Encounter</h3>
                                         <p className="leading-relaxed">
-                                            It was the midnight of July 19, 1981, during a Jerusalem Pilgrimage, when Lady Patience experienced a life-altering vision. The Lord spoke clearly: <span className="font-semibold italic text-blue-800">“That old thing need to go out of your life... where we are going, there is no discrimination.”</span> This sacred moment set her on a path of ministry.
+                                        It was the midnight of July 19, 1981, during a Jerusalem Pilgrimage with her husband, when Lady Patience experienced a life-altering vision. While resting at Sharon Hotel in Israel, she found herself lifted from her bed by an unseen force, her entire being overwhelmed by a divine presence. In that sacred moment, the voice of the Lord spoke clearly, <span className="font-semibold italic text-amber-700">“That old thing need to go out of your life... where we are going, there is no discrimination.”</span>
                                         </p>
                                     </div>
                                 </div>
@@ -122,7 +122,7 @@ const Founder = () => {
                                             <h4 className="font-semibold text-gold">Divine Mission</h4>
                                         </div>
                                         <p className="text-cream-white/90 leading-relaxed text-base">
-                                            Her commitment led to the establishment of Anglican Children Ministry (ACM) and the Anglican Church of Resurrection Woliwo Onitsha.
+                                        Upon returning to Nigeria, this newfound purpose drove her to dedicate herself to the work of God's kingdom, particularly in the area of children’s ministry. Her commitment led to the establishment of several impactful ministries, including Anglican Children Ministry (ACM) Woliwo Onitsha, Anglican Children Ministry (ACM) Osumenyi, and the Anglican Church of Resurrection Woliwo Onitsha.
                                         </p>
                                     </div>
                                 </motion.div>
@@ -130,7 +130,7 @@ const Founder = () => {
                                 <motion.div variants={paragraphVariants}>
                                     <div className="bg-white text-slate-700 p-6 rounded-xl shadow-lg h-full flex items-center border border-gold/50">
                                         <p className="leading-relaxed text-base">
-                                            In collaboration with her late husband, she founded the **Family Anchor Ministry**, an interdenominational NGO providing spiritual nourishment to countless families and children.
+                                        In collaboration with her late husband, Sir Godson Ejidike Oguine, she founded <span className="font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">Family Anchor Ministry</span>. This interdenominational, non-governmental organization has become a beacon of hope, providing guidance and spiritual nourishment to countless families and children.
                                         </p>
                                     </div>
                                 </motion.div>
@@ -144,7 +144,7 @@ const Founder = () => {
                                     <div>
                                         <h4 className="font-semibold text-deep-blue mb-2">Global Impact</h4>
                                         <p className="leading-relaxed">
-                                            As a passionate evangelist, Lady Patience has traveled extensively. Her efforts have seen the Church of Resurrection grow to serve over <span className="font-bold text-deep-blue">1000 worshippers</span>—a true testament to her dedication and obedience.
+                                        As a passionate evangelist and church builder, Lady Patience has traveled extensively, leaving a lasting impact wherever she goes. Her tireless efforts have seen the Church of Resurrection grow to serve over <span className="font-bold text-amber-600">1000 Bible-believing converts and worshippers</span>—a true testament to her dedication and obedience to God’s calling.
                                         </p>
                                     </div>
                                 </div>
@@ -159,7 +159,7 @@ const Founder = () => {
                                         <h4 className="font-semibold text-deep-blue">A Legacy of Love</h4>
                                     </div>
                                     <p className="leading-relaxed">
-                                        A mother to <span className="font-bold text-deep-blue">11</span> children, Lady Patience has raised a legacy of faith and service that extends across generations.
+                                      A mother to <span className="font-bold text-amber-700">11</span> children, with many grandchildren and great-grandchildren, Lady Patience has raised a legacy of faith and service that extends across generations. Her life is a powerful reminder of the transformative power of God’s love and the difference one faithful servant can make in the world.
                                     </p>
                                 </div>
                             </motion.div>

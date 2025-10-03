@@ -31,9 +31,8 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Intersection Observer only runs on the Home Page
     useEffect(() => {
-        if (!isHomePage) return; // Skip observer if not on home page
+        if (!isHomePage) return;
 
         const observer = new IntersectionObserver(
             (entries) => {
@@ -75,20 +74,17 @@ const Navbar = () => {
 
     const handleSectionLinkClick = (e, link) => {
         e.preventDefault();
-        setMenuOpen(false); // Always close mobile menu on click
+        setMenuOpen(false);
 
         if (!isHomePage) {
-            // If NOT on the home page, navigate to home with the hash
-            // This tells react-router-dom to scroll after the page loads
             navigate(`/#${link.id}`);
         } else {
-            // If on the home page, just smooth scroll
             scrollToSection(link.id);
         }
     };
 
     const handleRouteLinkClick = () => {
-        setMenuOpen(false); // Close mobile menu when navigating to a new route
+        setMenuOpen(false);
     };
 
     const backgroundClass = scrolled 
@@ -96,14 +92,10 @@ const Navbar = () => {
         : 'bg-transparent';
     
     const finalMobileMenuClass = menuOpen 
-        ? (scrolled 
-            ? 'bg-deep-blue/90 shadow-2xl backdrop-blur-md' 
-            : 'bg-deep-blue shadow-3xl') 
+        ? 'bg-transparent backdrop-blur-md shadow-3xl'
         : '';
 
-    // A unified render function to choose between Link and a/button based on type
     const renderNavLink = (link, isMobile = false) => {
-        // Active logic: if we are on the homepage, use activeSection. Otherwise, highlight 'founder-page' if we're on its route.
         const isActive = isHomePage 
             ? activeSection === link.id
             : link.id === 'founder-page' && location.pathname === link.url;
@@ -124,11 +116,9 @@ const Navbar = () => {
                 </Link>
             );
         } else {
-            // Use an anchor tag for smooth scrolling sections, with onClick to handle navigation if needed
             return (
                 <a
                     key={link.id}
-                    // For routing/scrolling to work from any page, the href should point home with a hash.
                     href={`/#${link.id}`} 
                     onClick={(e) => handleSectionLinkClick(e, link)}
                     className={baseClass}
