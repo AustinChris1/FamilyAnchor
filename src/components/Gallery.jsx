@@ -19,7 +19,7 @@ const members = [
         name: 'Godson Ugochukwu Oguine. Esq.',
         title: 'Secretary of the Board',
         image: '/images/GodsonUgochukwu.jpg',
-        social: { twitter: '#', facebook: '#', linkedin: '#'}
+        social: { twitter: '#', facebook: '#', linkedin: '#' }
     },
     {
         name: 'Dame Ezinne Ifeyinwa Ukachukwu',
@@ -155,6 +155,22 @@ const allGalleryImages = [
     '/images/IMG-20250131-WA0026.jpg',
     '/images/IMG-20250131-WA0028.jpg',
     '/images/IMG-20250131-WA0029.jpg',
+    '/images/20251002_003612.jpg',
+    '/images/20251002_003753.jpg',
+    '/images/20251002_003829.jpg',
+    '/images/20251002_005533.jpg',
+    '/images/20251002_011211.jpg',
+    '/images/20251002_011501.jpg',
+    '/images/IMG-20201115-WA0001.jpg',
+    '/images/IMG-20230616-WA0018.jpg',
+    '/images/IMG-20241014-WA0000.jpg',
+    '/images/IMG-20241014-WA0011.jpg',
+    '/images/IMG-20241014-WA0013.jpg',
+    '/images/IMG-20241014-WA0074.jpg',
+    '/images/random23444.jpg',
+    '/images/random3431.jpg',
+    '/images/random34444.jpg',
+    '/images/random34455.jpg',
 ];
 
 const CustomCarousel = ({ children, slidesToShow = 3 }) => {
@@ -193,7 +209,7 @@ const CustomCarousel = ({ children, slidesToShow = 3 }) => {
         const interval = setInterval(() => {
             setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
         }, 4000);
-        
+
         return () => clearInterval(interval);
     }, [maxIndex]);
 
@@ -204,11 +220,10 @@ const CustomCarousel = ({ children, slidesToShow = 3 }) => {
             <button
                 onClick={prev}
                 disabled={currentIndex === 0}
-                className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white shadow-lg border transition-all duration-200 ${
-                    currentIndex === 0 
-                        ? 'opacity-50 cursor-not-allowed' 
+                className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white shadow-lg border transition-all duration-200 ${currentIndex === 0
+                        ? 'opacity-50 cursor-not-allowed'
                         : 'hover:bg-yellow-400 hover:shadow-xl'
-                }`}
+                    }`}
                 style={{ marginLeft: '-20px' }}
             >
                 <ArrowLeft size={20} className="text-blue-900" />
@@ -217,23 +232,22 @@ const CustomCarousel = ({ children, slidesToShow = 3 }) => {
             <button
                 onClick={next}
                 disabled={currentIndex >= maxIndex}
-                className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white shadow-lg border transition-all duration-200 ${
-                    currentIndex >= maxIndex 
-                        ? 'opacity-50 cursor-not-allowed' 
+                className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white shadow-lg border transition-all duration-200 ${currentIndex >= maxIndex
+                        ? 'opacity-50 cursor-not-allowed'
                         : 'hover:bg-yellow-400 hover:shadow-xl'
-                }`}
+                    }`}
                 style={{ marginRight: '-20px' }}
             >
                 <ArrowRight size={20} className="text-blue-900" />
             </button>
 
             <div className="mx-8">
-                <div 
+                <div
                     className="flex transition-transform duration-500 ease-in-out"
                     style={{ transform: `translateX(${translateX}%)` }}
                 >
                     {React.Children.map(children, (child, index) => (
-                        <div 
+                        <div
                             key={index}
                             className="flex-shrink-0 px-2"
                             style={{ width: `${100 / slidesToShowCurrent}%` }}
@@ -249,9 +263,8 @@ const CustomCarousel = ({ children, slidesToShow = 3 }) => {
                     <button
                         key={index}
                         onClick={() => setCurrentIndex(index)}
-                        className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                            currentIndex === index ? 'bg-yellow-400' : 'bg-gray-300'
-                        }`}
+                        className={`w-2 h-2 rounded-full transition-colors duration-200 ${currentIndex === index ? 'bg-yellow-400' : 'bg-gray-300'
+                            }`}
                     />
                 ))}
             </div>
@@ -293,7 +306,7 @@ const Gallery = () => {
                 >
                     Photo Gallery
                 </motion.h2>
-                
+
                 <motion.div
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                     variants={containerVariants}
@@ -321,37 +334,34 @@ const Gallery = () => {
                         <button
                             onClick={() => setCurrentPage(prev => Math.max(0, prev - 1))}
                             disabled={currentPage === 0}
-                            className={`p-2 rounded-full border border-yellow-400 transition-colors duration-200 ${
-                                currentPage === 0 
-                                    ? 'text-gray-400 cursor-not-allowed' 
+                            className={`p-2 rounded-full border border-yellow-400 transition-colors duration-200 ${currentPage === 0
+                                    ? 'text-gray-400 cursor-not-allowed'
                                     : 'text-blue-900 hover:bg-yellow-400 hover:text-white'
-                            }`}
+                                }`}
                         >
                             <ArrowLeft size={20} />
                         </button>
-                        
+
                         {[...Array(pageCount)].map((_, index) => (
                             <button
                                 key={index}
                                 onClick={() => setCurrentPage(index)}
-                                className={`w-8 h-8 rounded-full text-sm font-bold transition-colors duration-200 ${
-                                    currentPage === index 
-                                        ? 'bg-yellow-400 text-white' 
+                                className={`w-8 h-8 rounded-full text-sm font-bold transition-colors duration-200 ${currentPage === index
+                                        ? 'bg-yellow-400 text-white'
                                         : 'bg-transparent text-blue-900 hover:bg-yellow-400/20'
-                                }`}
+                                    }`}
                             >
                                 {index + 1}
                             </button>
                         ))}
-                        
+
                         <button
                             onClick={() => setCurrentPage(prev => Math.min(pageCount - 1, prev + 1))}
                             disabled={currentPage === pageCount - 1}
-                            className={`p-2 rounded-full border border-yellow-400 transition-colors duration-200 ${
-                                currentPage === pageCount - 1 
-                                    ? 'text-gray-400 cursor-not-allowed' 
+                            className={`p-2 rounded-full border border-yellow-400 transition-colors duration-200 ${currentPage === pageCount - 1
+                                    ? 'text-gray-400 cursor-not-allowed'
                                     : 'text-blue-900 hover:bg-yellow-400 hover:text-white'
-                            }`}
+                                }`}
                         >
                             <ArrowRight size={20} />
                         </button>
@@ -386,30 +396,30 @@ const Gallery = () => {
                             <p className="text-gray-600 mb-4">{member.title}</p>
                             <div className="flex space-x-4">
                                 {member.social.twitter && member.social.twitter !== '#' && member.social.twitter !== '' && (
-                                    <a 
-                                        href={member.social.twitter} 
-                                        target="_blank" 
-                                        rel="noopener noreferrer" 
+                                    <a
+                                        href={member.social.twitter}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="text-blue-900 hover:text-yellow-500 transition-colors duration-200"
                                     >
                                         <Twitter size={24} />
                                     </a>
                                 )}
                                 {member.social.facebook && member.social.facebook !== '#' && member.social.facebook !== '' && (
-                                    <a 
-                                        href={member.social.facebook} 
-                                        target="_blank" 
-                                        rel="noopener noreferrer" 
+                                    <a
+                                        href={member.social.facebook}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="text-blue-900 hover:text-yellow-500 transition-colors duration-200"
                                     >
                                         <Facebook size={24} />
                                     </a>
                                 )}
                                 {member.social.linkedin && member.social.linkedin !== '#' && member.social.linkedin !== '' && (
-                                    <a 
-                                        href={member.social.linkedin} 
-                                        target="_blank" 
-                                        rel="noopener noreferrer" 
+                                    <a
+                                        href={member.social.linkedin}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="text-blue-900 hover:text-yellow-500 transition-colors duration-200"
                                     >
                                         <Linkedin size={24} />

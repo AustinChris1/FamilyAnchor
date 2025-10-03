@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -12,23 +13,35 @@ import Footer from './components/Footer';
 import Gallery from './components/Gallery';
 import Founder from './components/Founder';
 
+
+function Home() {
+  return (
+    <main>
+      <Hero />
+      <About />
+      <Mission />
+      <Gallery />
+      <Impact />
+      <Programs />
+      <Stories />
+      <GetInvolved />
+      <Contact />
+    </main>
+  );
+}
+
 export default function App() {
   return (
     <div className="bg-cream-white font-raleway w-full">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Founder />
-        <Mission />
-        <Gallery/>
-        <Impact />
-        <Programs />
-        <Stories />
-        <GetInvolved />
-        <Contact />
-      </main>
-      <Footer />
+            <Router>
+        <Navbar /> 
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/founder" element={<Founder />} />
+        </Routes>
+        <Footer />
+      </Router>
+      
     </div>
   );
 }

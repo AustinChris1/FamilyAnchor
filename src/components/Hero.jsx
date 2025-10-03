@@ -8,14 +8,15 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
 
 const heroImages = [
-    { src: '/images/landing8.jpg', alt: 'Family Anchor' },
     { src: '/images/landing1.jpg', alt: 'Family Anchor' },
     { src: '/images/landing2.jpg', alt: 'Family Anchor' },
-    { src: '/images/landing3.jpg', alt: 'Family Anchor' },
+    { src: '/images/landing10.jpg', alt: 'Family Anchor' },
     { src: '/images/landing4.jpg', alt: 'Family Anchor' },
     { src: '/images/landing5.jpg', alt: 'Family Anchor' },
     { src: '/images/landing6.jpg', alt: 'Family Anchor' },
     { src: '/images/landing7.jpg', alt: 'Family Anchor' },
+    { src: '/images/landing3.jpg', alt: 'Family Anchor' },
+    { src: '/images/landing8.jpg', alt: 'Family Anchor' },
     { src: '/images/landing9.jpg', alt: 'Family Anchor' },
 ];
 

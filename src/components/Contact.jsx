@@ -122,7 +122,7 @@ const Contact = () => {
                                 {status === 'sending' ? 'Sending...' : 'Send Message'}
                             </motion.button>
                         </form>
-                        {status === 'success' && <p className="mt-4 text-center text-green-500 font-semibold">Message sent successfully! 😊</p>}
+                        {status === 'success' && <p className="mt-4 text-center text-green-500 font-semibold">Message sent successfully! A team member will reach out to you shortly😊</p>}
                         {status === 'error' && <p className="mt-4 text-center text-red-500 font-semibold">Failed to send message. Please try again later. 😟</p>}
                     </motion.div>
                 </div>
