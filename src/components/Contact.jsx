@@ -11,7 +11,7 @@ const Contact = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setStatus('sending');
-        emailjs.sendForm('familyAnchor', 'template_80t23yr', form.current, 'B4QJXB35Yq9_rIqBF')
+        emailjs.sendForm('service_3m2tplb', 'template_gn53ojr', form.current, 'e5qSgN3wy6DJcbeod')
             .then((result) => {
                 console.log(result.text);
                 setStatus('success');
